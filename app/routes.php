@@ -28,6 +28,7 @@ Route::get('users', function()
 
 
 /* third mode */
-Route::get('test', function(){
+/* Route::get('test', function(){
 	return 'TESTANDO OK!!!';
 });
+*/
