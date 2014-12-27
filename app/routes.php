@@ -31,7 +31,3 @@ Route::get('users', function()
 Route::get('test', function(){
 	return 'TESTANDO OK!!!';
 });
-
-Route::get('renato', function(){
-	return 'Te amo Kichan!!!';
-});
