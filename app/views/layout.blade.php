@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Laravel Quickstart</h1>
+      <h1>Laravel Studies</h1>
 
       @yield('content')
     </div>
