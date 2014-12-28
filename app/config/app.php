@@ -39,7 +39,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Sao_Paulo',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'pt-br',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => '!@# aplicação de teste !@#',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
