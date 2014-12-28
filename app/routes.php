@@ -29,5 +29,5 @@ Route::get('users', function()
 
 /* third mode */
 Route::get('test', function(){
-	return Config::get('app.timezone');
+	return View::make('test');
 });

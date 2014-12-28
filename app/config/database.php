@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => $_ENV['DRIVER'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => $_ENV['DB_HOST'],
+			'database'  => $_ENV['DATABASE'],
+			'username'  => $_ENV['DB_USER'],
+			'password'  => $_ENV['DB_PASSWORD'],
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

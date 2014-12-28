@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => '!@# aplicação de teste !@#',
+	'key' => $_ENV['PASS'],
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
