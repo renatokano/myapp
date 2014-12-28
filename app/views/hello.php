@@ -51,6 +51,10 @@
 		Endereço: <input type="text" name="address">
 		<input type="submit" value="Enviar">
 	</form>
+
+	<p>
+		<?=Cookie::get('forever');?>
+	</p>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->

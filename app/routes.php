@@ -11,10 +11,7 @@
 |
 */
 /* first mode */
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@index');
 
 /* second mode
 Route::get('users', 'users@index');
@@ -48,6 +45,28 @@ Route::post('submit', function(){
 		return Redirect::to('/');
 	}
 });
+
+/*********************************
+
+	Cookies
+
+*********************************/
+
+Route::get('cookieset', function()
+{
+	$foreverCookie = Cookie::forever('forever', 'Success');
+	$tempCookie = Cookie::make('temporary', 'Temporary', 1);
+	return Response::make()->withCookie($foreverCookie)->withCookie($tempCookie);
+});
+
+
+Route::get('cookietest', function()
+{
+	$forever = Cookie::get('forever');
+	$temporary = Cookie::get('temporary');
+	return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
+});
+
 
 /*********************************
 
