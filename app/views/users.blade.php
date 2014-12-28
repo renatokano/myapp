@@ -4,7 +4,7 @@
 <h2>Users!</h2>
 <ul>
   @foreach($users as $user)
-  <li>{{ $user->name }}</li>
+  <li><a href='profile/{{$user->id}}'>{{ $user->name }}</a></li>
   @endforeach
 </ul>
 @stop

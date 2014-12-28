@@ -11,6 +11,7 @@ class users extends \BaseController {
 	{
 		//
 		echo 'Painel de Usuários';
+		
 	}
 
 

@@ -40,10 +40,17 @@
 		<h1>You have arrived.</h1>
 		<br>
 		<ul>
-			<li class="list-unstyled"><a href="test">Test</a></li>
-			<li class="list-unstyled"><a href="users">Users</a></li>
+			<li class="list-unstyled"><a href="<?=URL::to('test')?>">Test</a></li>
+			<li class="list-unstyled"><a href="<?=URL::to('users')?>">Users</a></li>
+			<li class="list-unstyled"><a href="<?=URL::route('profile')?>">User.profile</a></li>
 		</ul>
 	</div>
+
+	<form action="<?=URL::to('submit')?>" method="post">
+		Nome: <input type="text" name="name">
+		Endereço: <input type="text" name="address">
+		<input type="submit" value="Enviar">
+	</form>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
