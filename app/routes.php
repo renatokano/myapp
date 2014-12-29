@@ -30,6 +30,27 @@ Route::get('test', function(){
 });
 
 Route::post('submit', function(){
+	if(Input::hasFile('photo')){
+
+		$file = Input::file('photo');
+
+		// multiple files submitted
+		if(is_array($file))
+		{
+			foreach($file as $part) {
+				$filename = $part->getClientOriginalName();
+				$part->move($destinationPath, $filename);
+			}
+		}
+		else //single file
+		{
+			$filename = $file->getClientOriginalName();
+			$uploadSuccess = Input::file('photo')->move($destinationPath, $filename);
+		}
+
+	} else {
+		echo 'Error: no file submitted.';
+	};
 	if (Input::has('name')){
 		// $name = Input::get('name');
 		// $address = Input::get('address');
@@ -37,6 +58,9 @@ Route::post('submit', function(){
 		//return Redirect::to('/');
 
 		$input = Input::all();
+		// Flashing Input to the Session
+		// Input::flash();
+		// return Redirect::to('/')->withInput();
 		// return $input['name'].' and '.$input['address'];
 		return View::make('success')->with('input',$input);
 
@@ -44,6 +68,32 @@ Route::post('submit', function(){
 	else {
 		return Redirect::to('/');
 	}
+});
+
+/*********************************
+
+	View Composer
+
+*********************************/
+
+View::composer('layout', function($view){
+	$users = User::all();
+	$view->with(compact('users'));
+});
+
+
+/********************************
+
+	Responses
+
+********************************/
+
+Route::get('json', function(){
+	return Response::json(array(
+		'name' => 'Renato Kano',
+		'old' => 30,
+		'address' => 'Av. Liberdade, 959',
+		'married' => true));
 });
 
 /*********************************
@@ -70,7 +120,7 @@ Route::get('cookietest', function()
 
 /*********************************
 
-		Route Parameters Studies
+	Route Parameters Studies
 
 **********************************/
 
@@ -122,7 +172,7 @@ Route::get('cookietest', function()
 
 /*********************************
 
-		Route Filters Studies
+	Route Filters Studies
 
 **********************************/
 
@@ -170,7 +220,8 @@ Route::filter('foo','FooFilter');
 class FooFilter {
 	public function filter(){
 		if(Input::get('age') < 200){
-			return Redirect::to('/');
+			// redirect with flash data (session) -> use Session::get method to retrieve data
+			return Redirect::to('/')->with('message','Você é Juvenal!');
 		}
 	}
 };
@@ -182,7 +233,7 @@ Route::get('user',array('before' => 'foo', function(){
 
 /********************************
 
-			Named Routes
+	Named Routes
 
 ********************************/
 
@@ -191,7 +242,7 @@ Route::get('user/profile', array('as' => 'profile', 'uses' => 'users@index'));
 
 /********************************
 
-			Route Groups
+	Route Groups
 
 ********************************/
 
@@ -207,7 +258,7 @@ Route::group(array('before' => 'auth'), function(){
 
 /*********************************
 
-			Sub-Domain Routing
+	Sub-Domain Routing
 
 *********************************/
 
@@ -219,7 +270,7 @@ Route::group(array('domain' => '{account}.bluelabs.com'), function(){
 
 /*********************************
 
-			Route Model Binding
+	Route Model Binding
 
 *********************************/
 

@@ -7,6 +7,12 @@
   <body>
     <div class="container">
       <h1>Laravel Studies</h1>
+      @foreach($users as $user)
+          <p>
+            {{$user->name;}}
+          </p>
+      @endforeach
+
 
       @yield('content')
     </div>
